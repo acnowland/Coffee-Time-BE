@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
     skip_before_action :authenticate, only: :create
     def profile
-        render json: @user
+        @users = User.all
+        render json: {user:@user, users: @users}
     end
 
     def index
@@ -12,7 +13,10 @@ class UsersController < ApplicationController
     def create
         @user = User.new(
             username: params[:username],
-            password: params[:password]
+            password: params[:password],
+            fullName: params[:fullName],
+            mod: params[:mod],
+            slackLink: params[:slackLink]
         )
         if @user.valid?
             @user.save
