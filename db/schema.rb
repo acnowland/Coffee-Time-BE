@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_204819) do
+ActiveRecord::Schema.define(version: 2021_03_31_222832) do
 
   create_table "Users", force: :cascade do |t|
     t.string "username"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_204819) do
     t.string "fullName"
     t.integer "mod"
     t.string "slackLink"
+    t.string "time"
   end
 
   create_table "coffee_breaks", force: :cascade do |t|
