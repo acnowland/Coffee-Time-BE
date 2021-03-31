@@ -17,6 +17,7 @@ class UsersController < ApplicationController
             password: params[:password],
             fullName: params[:fullName],
             mod: params[:mod],
+            time: params[:time],
             slackLink: params[:slackLink]
         )
         if @user.valid?
