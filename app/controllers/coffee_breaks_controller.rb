@@ -6,8 +6,12 @@ class CoffeeBreaksController < ApplicationController
 
     def create
         @break = CoffeeBreak.create_mutual_coffee_break(params[:user_1_id], params[:user_2_id])
-
         render json: @break
     end
+
+    def destroy
+        CoffeeBreak.destroy_mutual_coffee_break(params[:user_1_id], params[:user_2_id])
+    end
+
     
 end
