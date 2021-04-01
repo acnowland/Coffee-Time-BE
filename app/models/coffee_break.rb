@@ -3,8 +3,13 @@ class CoffeeBreak < ApplicationRecord
   belongs_to :user_2, class_name: "User"
 
   def self.create_mutual_coffee_break(user_1_id, user_2_id)
-    CoffeeBreak.create(user_1_id: user_1_id, user_2_id: user_2_id)
-    CoffeeBreak.create(user_1_id: user_2_id, user_2_id: user_1_id)
+    if(CoffeeBreak.find_by(user_1_id: user_1_id, user_2_id: user_2_id))
+      render json: 'one created already'
+    else
+      CoffeeBreak.create(user_1_id: user_1_id, user_2_id: user_2_id)
+      CoffeeBreak.create(user_1_id: user_2_id, user_2_id: user_1_id)
+    end
+
   end
 
   def self.destroy_mutual_coffee_break(user_1_id, user_2_id)
